@@ -1,6 +1,7 @@
 package com.adorsys.springdemo.service;
 
 import com.adorsys.springdemo.entity.Employee;
+import com.adorsys.springdemo.exception.CustomException;
 import com.adorsys.springdemo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmployeeById(Long id) {
-        return repo.findById(id).orElseThrow(() -> new RuntimeException("Employee not found: " + id));
+        return repo.findById(id).orElseThrow(() -> new CustomException("Employee not found: " + id));
     }
 
     @Override
